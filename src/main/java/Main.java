@@ -21,6 +21,11 @@ public class Main {
                     query = "SELECT * FROM customers WHERE country is not NUll ORDER BY country  ";
                     displayResults(query, choice);
                     break;
+                case 3:
+                    query = "SELECT * FROM categories";
+                    displayResults(query, choice);
+                    searchCategory();
+                    break;
                 case 0:
                     exit();
                     running = false;
@@ -28,6 +33,13 @@ public class Main {
             }
         }
 
+    }
+
+    private static void searchCategory() throws SQLException {
+        System.out.println("Enter categoryID to search: ");
+        int id = scanner.nextInt();
+        String query = "SELECT ProductID,ProductName,UnitPrice,UnitsInStock FROM Products WHERE CategoryID = " + id;
+        displayResults(query, 4);
     }
 
     private static void exit() {
@@ -39,6 +51,7 @@ public class Main {
                 What do you want to do?
                 1) Display all products
                 2) Display all customers
+                3) Display all categories
                 0) Exit
                 Select an option:""");
 
@@ -81,6 +94,25 @@ public class Main {
                     System.out.println("Country: " + country);
                     System.out.println("Phone: " + phone);
                     System.out.println("------------------");
+                } else if (choice == 3) {
+                    int categoryId = resultSet.getInt("CategoryID");
+                    String categoryName = resultSet.getString("CategoryName");
+
+                    System.out.println("Category ID: " + categoryId);
+                    System.out.println("Category Name: " + categoryName);
+                    System.out.println("------------------");
+                } else if (choice == 4) {
+                    int productId = resultSet.getInt("ProductID");
+                    String productName = resultSet.getString("ProductName");
+                    Double price = resultSet.getDouble("UnitPrice");
+                    int unitsInStock = resultSet.getInt("UnitsInStock");
+
+                    System.out.println("Product ID: " + productId);
+                    System.out.println("Product Name: " + productName);
+                    System.out.println("Unit Price: " + price);
+                    System.out.println("Units In Stock: " + unitsInStock);
+                    System.out.println("------------------");
+
                 }
             }
         } catch (SQLException e) {
