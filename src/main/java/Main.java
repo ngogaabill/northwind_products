@@ -18,7 +18,7 @@ public class Main {
                     displayResults(query, choice);
                     break;
                 case 2:
-                    query = "SELECT * FROM customers";
+                    query = "SELECT * FROM customers WHERE country is not NUll ORDER BY country  ";
                     displayResults(query, choice);
                     break;
                 case 0:
@@ -68,14 +68,17 @@ public class Main {
                     System.out.println("------------------");
                 } else if (choice == 2) {
 
-                    String id = resultSet.getString("CustomerID");
-                    String name = resultSet.getString("ContactName");
+                    //String id = resultSet.getString("CustomerID");
+                    String contactName = resultSet.getString("ContactName");
+                    String companyName = resultSet.getString("CompanyName");
+                    String city = resultSet.getString("City");
                     String country = resultSet.getString("Country");
                     String phone = resultSet.getString("Phone");
 
-                    System.out.println("Product Id: " + id);
-                    System.out.println("Name: " + name);
-                    System.out.println("Price: " + country);
+                    System.out.println("Company Name: " + companyName);
+                    System.out.println("Name: " + contactName);
+                    System.out.println("City: " + city);
+                    System.out.println("Country: " + country);
                     System.out.println("Phone: " + phone);
                     System.out.println("------------------");
                 }
