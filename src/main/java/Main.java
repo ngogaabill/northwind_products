@@ -79,9 +79,8 @@ public class Main {
                     System.out.println("Price: " + price);
                     System.out.println("Stock: " + stock);
                     System.out.println("------------------");
-                } else if (choice == 2) {
 
-                    //String id = resultSet.getString("CustomerID");
+                } else if (choice == 2) {
                     String contactName = resultSet.getString("ContactName");
                     String companyName = resultSet.getString("CompanyName");
                     String city = resultSet.getString("City");
@@ -97,7 +96,6 @@ public class Main {
                 } else if (choice == 3) {
                     int categoryId = resultSet.getInt("CategoryID");
                     String categoryName = resultSet.getString("CategoryName");
-
                     System.out.println("Category ID: " + categoryId);
                     System.out.println("Category Name: " + categoryName);
                     System.out.println("------------------");
